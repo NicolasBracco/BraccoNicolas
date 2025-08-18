@@ -7,7 +7,7 @@ using static Ejercicio01.Excepciones;
 
 namespace Ejercicio01
 {
-    public class Cuenta : Excepciones
+    public abstract class Cuenta : Excepciones
     {
         private Cliente titular;
         private string codigo;

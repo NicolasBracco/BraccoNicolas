@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ejercicio01
 {
-    public class Banco
+    public class Banco : Excepciones
     {
         private RepositorioCuentas repositorioCuentas;
         private RepositorioClientes repositorioClientes;
