@@ -94,6 +94,7 @@ namespace BlogPosts_SQL_EntityFramework
             {
                 MessageBox.Show("Ocurrió un error al modificar: " + ex.Message);
             }
+            this.Close();
         }
 
         private void CargarDatos(int id)
