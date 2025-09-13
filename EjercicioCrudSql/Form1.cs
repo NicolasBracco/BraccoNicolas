@@ -1,4 +1,4 @@
-namespace BlogPosts_SQL
+namespace EjercicioCrudSql
 {
     public partial class Form1 : Form
     {
@@ -6,5 +6,6 @@ namespace BlogPosts_SQL
         {
             InitializeComponent();
         }
+
     }
 }

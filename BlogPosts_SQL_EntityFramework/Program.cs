@@ -1,4 +1,4 @@
-namespace BlogPosts_SQL
+namespace BlogPosts_SQL_EntityFramework
 {
     internal static class Program
     {
