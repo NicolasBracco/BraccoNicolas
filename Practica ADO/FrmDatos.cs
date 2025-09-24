@@ -12,9 +12,16 @@ namespace ado_multiplestablas
 {
     public partial class FrmDatos : Form
     {
-        public FrmDatos()
+        private int? id;
+
+        public FrmDatos(int? id = null)
         {
             InitializeComponent();
+
+            this.id = id;
+
+            if (id != null)
+                CargarDatos();
         }
     }
 }

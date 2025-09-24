@@ -37,6 +37,7 @@ namespace ado_multiplestablas
                 }
             }
         }
+
         public IReadOnlyCollection<Avion> ListarAviones()
         {
             using (SqlConnection conn = new SqlConnection(cadenaConexion))
@@ -60,6 +61,7 @@ namespace ado_multiplestablas
             }
             return listaAviones.AsReadOnly();
         }
+
         public void ModificarAvion(Avion avion)
         {
             string query = "update Avion set Matricula = @matricula, Modelo = @modelo, Capacidad = @capacidad where IdAvion = @idAvion";
@@ -72,6 +74,7 @@ namespace ado_multiplestablas
                 comando.Parameters.AddWithValue("@matricula", avion.Matricula);
                 comando.Parameters.AddWithValue("@modelo", avion.Modelo);
                 comando.Parameters.AddWithValue("@capacidad", avion.Capacidad);
+                comando.Parameters.AddWithValue("@idAvion", avion.IdAvion);
 
                 try
                 {
@@ -129,6 +132,7 @@ namespace ado_multiplestablas
                 }
             }
         }
+
         public IReadOnlyCollection<Pasajero> ListarPasajeros()
         {
             using (SqlConnection conn = new SqlConnection(cadenaConexion))
@@ -156,7 +160,8 @@ namespace ado_multiplestablas
 
         public void ModificarPasajeros(Pasajero pasajero)
         {
-            string query = "update Pasajero set Pasaporte = @pasaporte, NombreApellido = @nombreApellido, Nacionalidad = @nacionalidad where IdPasajero = @idPasajero";
+            string query = "update Pasajero set Pasaporte = @pasaporte, NombreApellido = @nombreApellido, Nacionalidad = @nacionalidad, FechaNacimiento = @fechaNacimiento " +
+                "where IdPasajero = @idPasajero";
 
 
             using (SqlConnection conexion = new SqlConnection(cadenaConexion))
@@ -166,6 +171,8 @@ namespace ado_multiplestablas
                 comando.Parameters.AddWithValue("@pasaporte", pasajero.Pasaporte);
                 comando.Parameters.AddWithValue("@nombreApellido", pasajero.NombreApellido);
                 comando.Parameters.AddWithValue("@nacionalidad", pasajero.Nacionalidad);
+                comando.Parameters.AddWithValue("@fechaNacimiento", pasajero.FechaNacimiento);
+                comando.Parameters.AddWithValue("@idPasajero", pasajero.IdPasajero);
 
                 try
                 {
@@ -223,6 +230,7 @@ namespace ado_multiplestablas
                 }
             }
         }
+
         public IReadOnlyCollection<Pasaje> ListarPasajes()
         {
             using (SqlConnection conn = new SqlConnection(cadenaConexion))
