@@ -23,5 +23,14 @@ namespace ado_multiplestablas
             if (id != null)
                 CargarDatos();
         }
+
+        private void CargarDatos()
+        {
+            RepositorioPasajes pasajes = new RepositorioPasajes();
+            Pasaje pasajero = pasajes.ObtenerPasajePorId(id);
+
+            
+
+        }
     }
 }

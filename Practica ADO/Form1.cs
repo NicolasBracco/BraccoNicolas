@@ -66,7 +66,7 @@ namespace ado_multiplestablas
         public void RefrescarAvion()
         {
 
-            DgvAvion.DataSource = Aviones.ListarPasajeros();
+            DgvAvion.DataSource = Aviones.ListarAviones();
         }
 
         private int? GetIdPasajes()

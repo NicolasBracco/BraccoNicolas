@@ -11,7 +11,7 @@ namespace ado_multiplestablas
 {
     public class RepositorioPasajes
     {
-        private string cadenaConexion = "Data Source=RCAL1306P10-111;Initial Catalog=PasajesAviones;Integrated Security=True;Persist Security Info=False;Pooling=False;Encrypt=False";
+        private string cadenaConexion = "Data Source=LAPTOP-NICO\\SQLEXPRESS;Initial Catalog=PasajesAviones;Integrated Security=True;Persist Security Info=False;Pooling=False;Encrypt=False";
         private List<Avion> listaAviones;
         private List<Pasaje> listaPasajes;
         private List<Pasajero> listaPasajeros;
@@ -308,6 +308,39 @@ namespace ado_multiplestablas
                 }
 
             }
+        }
+
+        public Pasaje ObtenerPasajePorId(int? IdPasaje)
+        {
+            Pasaje pasaje = null;
+
+            using (SqlConnection conn = new SqlConnection(cadenaConexion))
+            {
+                conn.Open();
+                string sql = @"SELECT idPasaje, NumeroAsiento, FechaVuelo, IdAvion, IdPasajero
+                       FROM Pasaje WHERE IdPasaje = @idPasaje";
+     
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@idPasaje", IdPasaje);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            pasaje = new Pasaje
+                            {
+                                IdPasaje = (int)reader["IdPasaje"],
+                                NumeroAsiento = reader["NumeroAsiento"].ToString(),
+                                FechaVuelo = (DateTime)reader["FechaVuelo"],
+
+                            };
+                        }
+                    }
+                }
+            }
+
+            return pasaje; // null si no existe
         }
 
     }
